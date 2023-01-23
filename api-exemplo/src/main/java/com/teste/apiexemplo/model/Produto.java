@@ -1,8 +1,16 @@
 package com.teste.apiexemplo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity//Esse modelo vai ser uma entidade no nosso BD, o spring que irá fazer isso.
 public class Produto {
     
     //#region Atributos
+    @Id//Vai transformar o ID em primary key
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String nome;

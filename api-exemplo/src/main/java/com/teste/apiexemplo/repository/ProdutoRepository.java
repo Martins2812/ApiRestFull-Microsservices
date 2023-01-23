@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Optional;
 
 import com.teste.apiexemplo.model.Produto;
+import com.teste.apiexemplo.model.exception.ResourceNotFoundException;
+
 import org.springframework.stereotype.Repository;
 
-
+//Injetou dependência
 @Repository
 public class ProdutoRepository {
     
+    //Simulando um banco de dados.
     private List<Produto> produtos = new ArrayList<Produto>();
     private Integer ultimoId = 0;
 
@@ -70,7 +73,7 @@ public class ProdutoRepository {
         Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
         
         if(produtoEncontrado.isEmpty()){
-            throw new InputMismatchException("Produto não encontrado");
+            throw new ResourceNotFoundException("Produto não pode ser atualizado pois não existe.");
         }
         
         //Preciso remover o produto antigo da lista e
